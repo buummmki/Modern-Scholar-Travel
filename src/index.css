@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #9a0e28;
+  --color-on-primary: #ffffff;
+  --color-primary-fixed: #ffdad9;
+  --color-on-primary-fixed: #40000a;
+  --color-surface: #fcf9f5;
+  --color-on-surface: #1c1c1a;
+  --color-on-surface-variant: #594040;
+  --color-background: #fcf9f5;
+  --color-on-background: #1c1c1a;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f6f3ef;
+  --color-surface-container: #f0ede9;
+  --color-surface-container-high: #ebe8e4;
+  --color-surface-container-highest: #e5e2de;
+  --color-surface-variant: #e5e2de;
+  --color-outline: #8d7070;
+  --color-outline-variant: #e1bebe;
+  --color-secondary: #5f5e5e;
+  --color-tertiary-fixed: #f4dfcb;
+  --color-on-tertiary-fixed: #241a0e;
+  --color-tertiary-fixed-dim: #d7c3b0;
+
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+}
+
+body {
+  font-family: 'Inter', 'Pretendard', sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-on-background);
+}
+
+h1, h2, h3, h4, h5, h6, .font-headline {
+  font-family: 'Manrope', sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+.primary-gradient, .scholar-gradient {
+  background: linear-gradient(135deg, #9a0e28 0%, #bc2c3d 100%);
+}
+
+.pattern-overlay {
+  mask-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+  opacity: 0.03;
+}
