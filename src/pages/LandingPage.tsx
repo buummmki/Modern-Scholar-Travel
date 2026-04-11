@@ -81,7 +81,7 @@ export default function LandingPage({ onNavigate }: Props) {
       {/* Hero Section */}
       <section className="relative min-h-[921px] flex items-center pt-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img alt="Seoul Cityscape with Namsan Tower" className="w-full h-full object-cover grayscale-[0%]" src="https://images.unsplash.com/photo-1538485399081-7191377e8241?q=80&w=2054&auto=format&fit=crop" referrerPolicy="no-referrer"/>
+          <img alt="Seoul Cityscape with Namsan Tower" className="w-full h-full object-cover grayscale-[0%]" src="/images/namsan.png" referrerPolicy="no-referrer"/>
           <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent"></div>
         </div>
         <div className="container mx-auto px-8 relative z-10 max-w-6xl">
@@ -237,7 +237,7 @@ export default function LandingPage({ onNavigate }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-[800px] md:h-[600px]">
             {/* Jongno */}
             <div className="md:col-span-8 group relative overflow-hidden bg-surface-container-highest rounded-sm">
-              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1546874177-9e664107314e?q=80&w=2069&auto=format&fit=crop"/>
+              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/seoul.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <h4 className="text-3xl font-bold mb-2">{t.destinations.jongno.title}</h4>
@@ -246,7 +246,7 @@ export default function LandingPage({ onNavigate }: Props) {
             </div>
             {/* Seongsu */}
             <div className="md:col-span-4 group relative overflow-hidden bg-surface-container-highest rounded-sm">
-              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1559314809-0d155014e29e?q=80&w=2070&auto=format&fit=crop"/>
+              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/cafe.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <h4 className="text-2xl font-bold mb-2">{t.destinations.seongsu.title}</h4>
@@ -255,7 +255,7 @@ export default function LandingPage({ onNavigate }: Props) {
             </div>
             {/* Gangnam */}
             <div className="md:col-span-4 group relative overflow-hidden bg-surface-container-highest rounded-sm">
-              <img alt="Gangnam District" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=2000&auto=format&fit=crop"/>
+              <img alt="Gangnam District" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/seoul_2.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <h4 className="text-2xl font-bold mb-2">{t.destinations.gangnam.title}</h4>
@@ -264,7 +264,7 @@ export default function LandingPage({ onNavigate }: Props) {
             </div>
             {/* Busan */}
             <div className="md:col-span-8 group relative overflow-hidden bg-surface-container-highest rounded-sm">
-              <img alt="Busan" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=2000&auto=format&fit=crop"/>
+              <img alt="Busan" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/busan.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <h4 className="text-3xl font-bold mb-2">Busan</h4>
@@ -421,7 +421,7 @@ export default function LandingPage({ onNavigate }: Props) {
 
       {/* Final CTA */}
       <section className="py-32 bg-primary text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517154421773-0529f29ea451?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center mix-blend-multiply opacity-30"></div>
+        <div className="absolute inset-0 bg-[url('/images/seoul_3.png')] bg-cover bg-center mix-blend-multiply opacity-30"></div>
         <div className="container mx-auto px-8 relative z-10">
           <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 max-w-4xl mx-auto leading-tight">Ready to experience the real Korea?</h2>
           <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">Skip the generic tours. Embark on a curated journey designed specifically for your interests and needs.</p>
