@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../translations';
 
+import { PlanTier } from '../types/schema';
+
 interface Props {
-  onNavigate: () => void;
+  onNavigate: (tier?: PlanTier) => void;
+  onViewSample: () => void;
 }
 
-export default function LandingPage({ onNavigate }: Props) {
+export default function LandingPage({ onNavigate, onViewSample }: Props) {
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language];
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -81,7 +84,7 @@ export default function LandingPage({ onNavigate }: Props) {
       {/* Hero Section */}
       <section className="relative min-h-[921px] flex items-center pt-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img alt="Seoul Cityscape with Namsan Tower" className="w-full h-full object-cover grayscale-[0%]" src="/images/namsan.png" referrerPolicy="no-referrer"/>
+          <img alt="Seoul Cityscape with Namsan Tower" className="w-full h-full object-cover grayscale-[0%]" src="images/namsan.png" />
           <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent"></div>
         </div>
         <div className="container mx-auto px-8 relative z-10 max-w-6xl">
@@ -94,10 +97,10 @@ export default function LandingPage({ onNavigate }: Props) {
               {t.hero.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button onClick={onNavigate} className="primary-gradient text-white px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-lg">
+              <button onClick={onNavigate} className="primary-gradient text-white px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest hover:scale-105 hover:shadow-2xl transition-all duration-300">
                 {t.hero.ctaPlan}
               </button>
-              <button className="bg-surface-container-highest/50 backdrop-blur-md text-on-surface px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest border border-outline-variant/30 hover:bg-surface-container-highest transition-all">
+              <button onClick={onViewSample} className="bg-surface-container-highest/50 backdrop-blur-md text-on-surface px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest border border-outline-variant/30 hover:scale-105 hover:bg-surface-container-highest transition-all duration-300">
                 {t.hero.ctaSample}
               </button>
             </div>
@@ -237,7 +240,7 @@ export default function LandingPage({ onNavigate }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-[800px] md:h-[600px]">
             {/* Jongno */}
             <div className="md:col-span-8 group relative overflow-hidden bg-surface-container-highest rounded-sm">
-              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/seoul.png"/>
+              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/cafe_2.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <h4 className="text-3xl font-bold mb-2">{t.destinations.jongno.title}</h4>
@@ -246,7 +249,7 @@ export default function LandingPage({ onNavigate }: Props) {
             </div>
             {/* Seongsu */}
             <div className="md:col-span-4 group relative overflow-hidden bg-surface-container-highest rounded-sm">
-              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/cafe.png"/>
+              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/seoul_4.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <h4 className="text-2xl font-bold mb-2">{t.destinations.seongsu.title}</h4>
@@ -255,7 +258,7 @@ export default function LandingPage({ onNavigate }: Props) {
             </div>
             {/* Gangnam */}
             <div className="md:col-span-4 group relative overflow-hidden bg-surface-container-highest rounded-sm">
-              <img alt="Gangnam District" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/seoul_2.png"/>
+              <img alt="Gangnam District" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/seoul.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <h4 className="text-2xl font-bold mb-2">{t.destinations.gangnam.title}</h4>
@@ -267,8 +270,8 @@ export default function LandingPage({ onNavigate }: Props) {
               <img alt="Busan" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/busan.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
               <div className="absolute bottom-8 left-8 text-white">
-                <h4 className="text-3xl font-bold mb-2">Busan</h4>
-                <p className="text-white/80 max-w-sm">Coastal beauty, vibrant seafood markets, and stunning beachside culture.</p>
+                <h4 className="text-3xl font-bold mb-2">{t.destinations.busan?.title || 'Busan'}</h4>
+                <p className="text-white/80 max-w-sm">{t.destinations.busan?.desc || 'Coastal beauty, vibrant seafood markets, and stunning beachside culture.'}</p>
               </div>
             </div>
           </div>
@@ -282,7 +285,7 @@ export default function LandingPage({ onNavigate }: Props) {
           <p className="text-on-surface-variant mb-16 max-w-2xl mx-auto">{t.pricing.description}</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Basic */}
-            <div className="p-10 bg-surface border border-outline-variant/20 rounded-sm flex flex-col text-left group hover:bg-surface-container-low transition-colors">
+            <div className="p-10 bg-surface border border-outline-variant/20 rounded-sm flex flex-col text-left group hover:bg-surface-container-low transition-colors relative z-10">
               <h3 className="text-xl font-bold mb-1">{t.pricing.basic.title}</h3>
               <p className="text-sm text-secondary mb-4">{t.pricing.basic.subtitle}</p>
               <div className="text-4xl font-black text-on-background mb-6">{t.pricing.basic.price}<span className="text-sm font-normal text-secondary">/plan</span></div>
@@ -298,11 +301,11 @@ export default function LandingPage({ onNavigate }: Props) {
                   {t.pricing.basic.addons.map((a, i) => <li key={i}>+ {a}</li>)}
                 </ul>
               </div>
-              <button onClick={onNavigate} className="w-full py-4 border border-primary text-primary font-bold uppercase tracking-widest text-xs hover:bg-primary hover:text-white transition-all">{t.pricing.basic.btn}</button>
+              <button onClick={() => onNavigate('basic')} className="w-full py-4 border border-primary text-primary font-bold uppercase tracking-widest text-xs hover:bg-primary hover:text-white transition-all">{t.pricing.basic.btn}</button>
             </div>
             {/* Custom */}
-            <div className="p-10 bg-surface-container-highest border-2 border-primary rounded-sm flex flex-col text-left relative transform md:scale-105 shadow-xl">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-6 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">Most Popular</div>
+            <div className="p-10 bg-surface-container-highest border-2 border-primary rounded-sm flex flex-col text-left relative transform md:scale-105 shadow-xl z-30">
+              <div onClick={() => onNavigate('custom')} className="cursor-pointer absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-6 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#bc2c3d] transition-colors">Most Popular</div>
               <h3 className="text-xl font-bold mb-1">{t.pricing.custom.title}</h3>
               <p className="text-sm text-secondary mb-4">{t.pricing.custom.subtitle}</p>
               <div className="text-4xl font-black text-on-background mb-6">{t.pricing.custom.price}<span className="text-sm font-normal text-secondary">/plan</span></div>
@@ -324,10 +327,10 @@ export default function LandingPage({ onNavigate }: Props) {
                   {t.pricing.custom.addons.map((a, i) => <li key={i}>+ {a}</li>)}
                 </ul>
               </div>
-              <button onClick={onNavigate} className="w-full py-4 primary-gradient text-white font-bold uppercase tracking-widest text-xs shadow-md">{t.pricing.custom.btn}</button>
+              <button onClick={() => onNavigate('custom')} className="w-full py-4 primary-gradient text-white font-bold uppercase tracking-widest text-xs shadow-md hover:opacity-90 transition-opacity">{t.pricing.custom.btn}</button>
             </div>
             {/* Premium */}
-            <div className="p-10 bg-surface border border-outline-variant/20 rounded-sm flex flex-col text-left group hover:bg-surface-container-low transition-colors">
+            <div className="p-10 bg-surface border border-outline-variant/20 rounded-sm flex flex-col text-left group hover:bg-surface-container-low transition-colors relative z-10">
               <h3 className="text-xl font-bold mb-1 text-primary">{t.pricing.premium.title}</h3>
               <p className="text-sm text-secondary mb-4">{t.pricing.premium.subtitle}</p>
               <div className="text-4xl font-black text-on-background mb-6">{t.pricing.premium.price}<span className="text-sm font-normal text-secondary">/plan</span></div>
@@ -367,7 +370,7 @@ export default function LandingPage({ onNavigate }: Props) {
                   {t.pricing.premium.addons.map((a, i) => <li key={i}>+ {a}</li>)}
                 </ul>
               </div>
-              <button onClick={onNavigate} className="w-full py-4 border border-primary text-primary font-bold uppercase tracking-widest text-xs hover:bg-primary hover:text-white transition-all">{t.pricing.premium.btn}</button>
+              <button onClick={() => onNavigate('premium')} className="w-full py-4 border border-primary text-primary font-bold uppercase tracking-widest text-xs hover:bg-primary hover:text-white transition-all">{t.pricing.premium.btn}</button>
             </div>
           </div>
           {/* Optional Add-ons */}
