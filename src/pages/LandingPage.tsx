@@ -84,7 +84,7 @@ export default function LandingPage({ onNavigate, onViewSample }: Props) {
       {/* Hero Section */}
       <section className="relative min-h-[921px] flex items-center pt-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img alt="Seoul Cityscape with Namsan Tower" className="w-full h-full object-cover grayscale-[0%]" src="images/namsan.png" />
+          <img alt="Seoul Cityscape with Namsan Tower" className="w-full h-full object-cover grayscale-[0%]" src="https://raw.githubusercontent.com/buummmki/Modern-Scholar-Travel/main/public/images/seoul.png" />
           <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent"></div>
         </div>
         <div className="container mx-auto px-8 relative z-10 max-w-6xl">
@@ -240,7 +240,7 @@ export default function LandingPage({ onNavigate, onViewSample }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-[800px] md:h-[600px]">
             {/* Jongno */}
             <div className="md:col-span-8 group relative overflow-hidden bg-surface-container-highest rounded-sm">
-              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/cafe_2.png"/>
+              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="https://raw.githubusercontent.com/buummmki/Modern-Scholar-Travel/main/public/images/food_1.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <h4 className="text-3xl font-bold mb-2">{t.destinations.jongno.title}</h4>
@@ -249,7 +249,7 @@ export default function LandingPage({ onNavigate, onViewSample }: Props) {
             </div>
             {/* Seongsu */}
             <div className="md:col-span-4 group relative overflow-hidden bg-surface-container-highest rounded-sm">
-              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/seoul_4.png"/>
+              <img alt="" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="https://raw.githubusercontent.com/buummmki/Modern-Scholar-Travel/main/public/images/seoul_4.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <h4 className="text-2xl font-bold mb-2">{t.destinations.seongsu.title}</h4>
@@ -258,7 +258,7 @@ export default function LandingPage({ onNavigate, onViewSample }: Props) {
             </div>
             {/* Gangnam */}
             <div className="md:col-span-4 group relative overflow-hidden bg-surface-container-highest rounded-sm">
-              <img alt="Gangnam District" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/seoul.png"/>
+              <img alt="Gangnam District" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="https://raw.githubusercontent.com/buummmki/Modern-Scholar-Travel/main/public/images/seoul_3.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <h4 className="text-2xl font-bold mb-2">{t.destinations.gangnam.title}</h4>
@@ -267,7 +267,7 @@ export default function LandingPage({ onNavigate, onViewSample }: Props) {
             </div>
             {/* Busan */}
             <div className="md:col-span-8 group relative overflow-hidden bg-surface-container-highest rounded-sm">
-              <img alt="Busan" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="/images/busan.png"/>
+              <img alt="Busan" className="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700" src="https://raw.githubusercontent.com/buummmki/Modern-Scholar-Travel/main/public/images/busan.png"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <h4 className="text-3xl font-bold mb-2">{t.destinations.busan?.title || 'Busan'}</h4>
@@ -376,11 +376,11 @@ export default function LandingPage({ onNavigate, onViewSample }: Props) {
           {/* Optional Add-ons */}
           <div className="mt-16 p-10 bg-surface-container-low rounded-sm">
             <h3 className="text-xl font-bold mb-8">{t.pricing.optionalAddons.title}</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {t.pricing.optionalAddons.items.map((item, i) => (
                 <div key={i} className="flex justify-between items-center p-4 bg-surface rounded-sm border border-outline-variant/20 text-sm">
-                  <span className="font-medium text-on-surface">{item.name}</span>
-                  <span className="font-bold text-primary">{item.price}</span>
+                  <span className="font-medium text-on-surface whitespace-nowrap">{item.name}</span>
+                  <span className="font-bold text-primary whitespace-nowrap ml-4">{item.price}</span>
                 </div>
               ))}
             </div>
@@ -424,7 +424,7 @@ export default function LandingPage({ onNavigate, onViewSample }: Props) {
 
       {/* Final CTA */}
       <section className="py-32 bg-primary text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/seoul_3.png')] bg-cover bg-center mix-blend-multiply opacity-30"></div>
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1613134771004-d63151ebf0e5?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center mix-blend-multiply opacity-30"></div>
         <div className="container mx-auto px-8 relative z-10">
           <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 max-w-4xl mx-auto leading-tight">Ready to experience the real Korea?</h2>
           <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">Skip the generic tours. Embark on a curated journey designed specifically for your interests and needs.</p>
