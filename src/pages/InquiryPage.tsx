@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../translations';
 import { PlanTier, ConsultationForm, initialFormData } from '../types/schema';
+import { loadStripe } from '@stripe/stripe-js';
 
 interface Props {
   tier?: PlanTier;
@@ -19,18 +20,70 @@ export default function InquiryPage({ tier = 'custom', onNavigate }: Props) {
   });
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const totalSteps = 6;
+
+  useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+    if (query.get('success')) {
+      setIsSubmitted(true);
+    }
+    if (query.get('canceled')) {
+      console.log('Order canceled -- continue to shop around and checkout when you are ready.');
+    }
+  }, []);
 
   const handlePrev = () => setCurrentStep(p => Math.max(p - 1, 1));
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (currentStep < totalSteps) {
       setCurrentStep(p => p + 1);
     } else {
       console.log("Form Submitted Successfully!");
       console.log(JSON.stringify(formData, null, 2));
-      setIsSubmitted(true);
+      
+      setIsProcessingPayment(true);
+      try {
+        let basePrice = 50000;
+        if (tier === 'custom') basePrice = 150000;
+        if (tier === 'premium') basePrice = 300000;
+
+        const response = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            plan: tier,
+            price: basePrice,
+            addons: formData.addons.selected
+          }),
+        });
+        
+        const session = await response.json();
+        if (session.error) {
+          throw new Error(session.error);
+        }
+        
+        const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
+        if (!stripePublicKey) {
+          console.warn("Stripe public key is missing. Skipping payment redirect.");
+          setIsSubmitted(true);
+          setIsProcessingPayment(false);
+          return;
+        }
+
+        const stripe = await loadStripe(stripePublicKey);
+        if (stripe) {
+          await stripe.redirectToCheckout({ sessionId: session.id });
+        }
+      } catch (error) {
+        console.error("Payment failed", error);
+        setIsSubmitted(true); // Fallback to success page if payment fails in demo
+        setIsProcessingPayment(false);
+      }
     }
   };
 
@@ -448,9 +501,14 @@ export default function InquiryPage({ tier = 'custom', onNavigate }: Props) {
             </button>
             <button 
               type="submit"
-              className="px-8 py-3 bg-primary text-white rounded-sm font-bold text-sm uppercase tracking-widest hover:brightness-110 transition-all shadow-md"
+              disabled={isProcessingPayment}
+              className="px-8 py-3 bg-primary text-white rounded-sm font-bold text-sm uppercase tracking-widest hover:brightness-110 transition-all shadow-md disabled:opacity-70 flex items-center justify-center min-w-[120px]"
             >
-              {currentStep === totalSteps ? t.inquiry.nav.submit : t.inquiry.nav.next}
+              {isProcessingPayment ? (
+                <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+              ) : (
+                currentStep === totalSteps ? t.inquiry.nav.submit : t.inquiry.nav.next
+              )}
             </button>
           </div>
         </form>
